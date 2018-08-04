@@ -1,4 +1,4 @@
-# Path to your oh-my-zsh configuration.
+    # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
@@ -46,13 +46,15 @@ ZSH_THEME="lukerandall"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(osx brew git git-flow zsh-syntax-highlighting python tmux sudo xcode)
+plugins=(osx brew git git-flow zsh-syntax-highlighting python tmux sudo xcode rake composer npm vagrant docker bower)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
 export PATH=$HOME/bin:/usr/local/bin:/Applications/XAMPP/xamppfiles/bin:$PATH
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$PATH:/usr/local/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
@@ -69,6 +71,14 @@ export PATH=$HOME/bin:/usr/local/bin:/Applications/XAMPP/xamppfiles/bin:$PATH
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Customer
+# antlr
+export CLASSPATH=".:/usr/local/lib/antlr-4.2.2-complete.jar:$CLASSPATH"
+export ANDROID_HOME=/Applications/eclipse/android-sdks
+export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+export PERL5LIB="~/perl5/lib/perl5;$PERL5LIB"
+alias antlr4='java -jar /usr/local/lib/antlr-4.2.2-complete.jar'
+alias grun='java org.antlr.v4.runtime.misc.TestRig'
+
 # 在右邊顯示時鐘
 RPROMPT='%{$fg[yellow]%}[20%D][%*]%{$reset_color%}'
 
@@ -77,4 +87,8 @@ alias sl='sl'
 alias md5='md5 -r'
 alias md5sum='md5 -r'
 alias lsblk='diskutil list'
-alias vim='mvim -v'
+
+# Load bash_profile
+if [ -f ~/.bash_profile ]; then
+    source ~/.bash_profile
+fi
